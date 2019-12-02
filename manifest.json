@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Job Application Autofill",
+  "version": "1.0",
+  "description": "",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_icon": "icons/border-48.png",
+    "default_title": "JobAppAutofill",
+    "default_popup": "./src/browser_action/browser_action.html"
+  }
+}
