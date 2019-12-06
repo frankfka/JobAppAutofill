@@ -25,21 +25,12 @@ class JobApplication {
     this.type = JobApplication.getType(appWindow)
   }
 
-  fillFields() {
+  fillFields(data) {
     if (this.type) {
-
-      let data = {};
-      data[DATA_FIRST_NAME] = "Frank";
-      data[DATA_LAST_NAME] = "Jia";
-      data[DATA_EMAIL] = "jiafrank98@gmail.com";
-      data[DATA_PN] = "7783849871";
-      data[DATA_WEBSITE] = "http://jiafrank.com/";
-      data[DATA_LINKEDIN] = "https://www.linkedin.com/in/jiafrank/";
-      data[DATA_US_RIGHT_TO_WORK] = true;
-      data[DATA_US_SPONSOR] = true;
-
       let appFiller = getApplicationFiller(this);
-      appFiller.fill(data);
+      if (appFiller) {
+        appFiller.fill(data);
+      }
     } else {
       console.warn("No application type is set")
     }

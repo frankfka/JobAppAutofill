@@ -8,13 +8,13 @@ function browserActionBtnClickedListener(e) {
     );
   }
 
-  if (e.target.classList.contains("autofill_btn")) {
+  if (e.target.classList.contains("autofill-btn")) {
     browser.tabs.query({ active: true, currentWindow: true })
     .then(executeAutofill)
     .catch((error) => {
       console.error(`Failed to execute content script: ${error.message}`);
     });
-  } else if (e.target.classList.contains("configure_btn")) {
+  } else if (e.target.classList.contains("configure-btn")) {
     browser.tabs.create({
       url: "/src/configure_tab/configure_tab.html"
     })

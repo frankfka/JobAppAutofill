@@ -15,27 +15,86 @@
 <body>
 <div class="header">
   <h1 class="header-title">Configure</h1>
-  <h3 class="header-subtitle">Job Application Autofill</h3>
+  <h5 class="header-subtitle">Job Application Autofill</h5>
 </div>
 <div class="info-form">
-  <form>
-    <label>
-      First Name
-      <input type="text" name="email">
-    </label>
-    <br>
 
-    <button type="submit">Save</button>
+  <div class="alert alert-success save-success-alert" role="alert">
+    Successfully Saved! Click to dismiss.
+  </div>
+
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="John">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Doe">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text"
+             class="form-control"
+             id="email"
+             name="email"
+             placeholder="john.doe@email.com">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" class="form-control" id="phone" name="phone" placeholder="6475354254">
+    </div>
+    <div class="form-group">
+      <label for="currentCompany">Current Company</label>
+      <input type="text"
+             class="form-control"
+             id="currentCompany"
+             name="currentCompany"
+             placeholder="ACME Corp.">
+    </div>
+    <div class="form-group">
+      <label for="website">Website</label>
+      <input type="text"
+             class="form-control"
+             id="website"
+             name="website"
+             placeholder="https://johndoe.com">
+    </div>
+    <div class="form-group">
+      <label for="linkedIn">LinkedIn</label>
+      <input type="text"
+             class="form-control"
+             id="linkedIn"
+             name="linkedIn"
+             placeholder="https://www.linkedin.com/in/johndoe">
+    </div>
+    <div class="form-group">
+      <label for="twitter">Twitter</label>
+      <input type="text"
+             class="form-control"
+             id="twitter"
+             name="twitter"
+             placeholder="https://twitter.com/johndoe">
+    </div>
+    <div class="form-group">
+      <label for="github">Github</label>
+      <input type="text"
+             class="form-control"
+             id="github"
+             name="github"
+             placeholder="https://github.com/johndoe">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
   </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+<script src="configure_tab.js"></script>
 </body>
 </html>

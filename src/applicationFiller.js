@@ -5,8 +5,7 @@ function getApplicationFiller(jobApplication) {
     case APP_TYPE_LEVER:
       return new LeverApplicationFiller(jobApplication.appWindow);
     case APP_TYPE_NONE:
-      console.log("none")
-      break;
+      return
   }
 }
 
@@ -17,6 +16,7 @@ class AppFillerUtil {
       elements[0].value = fillData;
     }
   }
+
   static fillElementWithValue(element, value) {
     // TODO: need to check if undefined
     if (element && value) {
@@ -73,8 +73,16 @@ class LeverApplicationFiller {
       }
     });
 
-    // TODO make this more robust
-    AppFillerUtil.fillElementWithValue(fullNameField, data[DATA_FIRST_NAME] + ' ' + data[DATA_LAST_NAME])
+    AppFillerUtil.fillElementWithValue(fullNameField,
+      data[DATA_FIRST_NAME] || data[DATA_LAST_NAME] ? data[DATA_FIRST_NAME] + ' ' + data[DATA_LAST_NAME] : "");
+    AppFillerUtil.fillElementWithValue(emailField, data[DATA_EMAIL]);
+    AppFillerUtil.fillElementWithValue(phoneField, data[DATA_PN]);
+    AppFillerUtil.fillElementWithValue(currentCompanyField, data[DATA_CURR_COMPANY]);
+    AppFillerUtil.fillElementWithValue(linkedInField, data[DATA_LINKEDIN]);
+    AppFillerUtil.fillElementWithValue(twitterField, data[DATA_TWITTER]);
+    AppFillerUtil.fillElementWithValue(githubField, data[DATA_GITHUB]);
+    AppFillerUtil.fillElementWithValue(portfolioField, data[DATA_WEBSITE]);
+
   }
 
 }
@@ -120,38 +128,25 @@ class GreenhouseApplicationFiller {
   fillCustomFields(data) {
     let linkedInField;
     let websiteField;
-    // let unitedStatesLegalRightField;
-    // let unitedStatesSponsorshipField;
     // Find supported custom fields
-    let customFields = this.appWindow.document.getElementById("custom_fields").getElementsByClassName(
+    let customFields = this.appWindow.document.getElementById("custom_fields")
+    .getElementsByClassName(
       "field");
     Array.prototype.forEach.call(customFields, (element) => {
       let innerLabel = element.querySelector('label');
       if (innerLabel && innerLabel.textContent) {
         let matchText = innerLabel.textContent.toLowerCase();
         let textInput = element.querySelector('input[type=text]');
-        let selectInput = element.querySelector('select');
-        if (matchText.includes("linkedin") && textInput) {
+        if (matchText.includes("linkedin profile") && textInput && !linkedInField) {
           linkedInField = textInput;
-          console.log(linkedInField)
-        } else if (matchText.includes("website") && textInput) {
+        } else if (matchText.includes("website") && textInput && !websiteField) {
           websiteField = textInput;
-          console.log(websiteField)
         }
-        // else if (matchText.includes("legal right to work") && selectInput) {
-        //   unitedStatesLegalRightField = selectInput;
-        //   console.log(unitedStatesLegalRightField)
-        // } else if (matchText.includes("immigration case") && selectInput) {
-        //   unitedStatesSponsorshipField = selectInput;
-        //   console.log(unitedStatesSponsorshipField)
-        // }
       }
     });
     // Fill in fields from data
     AppFillerUtil.fillElementWithValue(linkedInField, data[DATA_LINKEDIN]);
     AppFillerUtil.fillElementWithValue(websiteField, data[DATA_WEBSITE]);
-    // AppFillerUtil.fillElementWithValue(unitedStatesLegalRightField, data[DATA_US_RIGHT_TO_WORK] ? "1" : "0");
-    // AppFillerUtil.fillElementWithValue(unitedStatesSponsorshipField, data[DATA_US_SPONSOR] ? "1" : "0");
   }
 
 }

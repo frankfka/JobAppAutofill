@@ -1,4 +1,18 @@
-html, body {
+html {
   padding: auto;
   font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  margin-top: 4em;
+  text-align: center;
+}
+
+.info-form {
+  padding: 2em;
+}
+
+.save-success-alert {
+  display: none;
+  cursor: pointer;
 }
